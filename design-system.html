@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       DESIGN TOKENS - THEME: DEFAULT
+       ============================================ */
+    [data-theme="default"] {
+      /* Base */
+      --bg-primary: #0a0a1a;
+      --bg-secondary: #0f0f23;
+      --bg-surface: #12121f;
+      --bg-surface-hover: #1a1a2e;
+      --bg-surface-active: #22223a;
+      --bg-border: #2a2a3e;
+      --bg-border-hover: #3a3a4e;
+      
+      /* Texto */
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0c0;
+      --text-muted: #6b6b80;
+      --text-disabled: #404055;
+      --text-inverse: #0a0a1a;
+      
+      /* Brand */
+      --brand-primary: #00d4ff;
+      --brand-primary-hover: #00e5ff;
+      --brand-primary-active: #00b8e6;
+      --brand-primary-muted: rgba(0, 212, 255, 0.15);
+      --brand-secondary: #00ffcc;
+      --brand-secondary-hover: #00ffdd;
+      
+      /* Semânticas */
+      --color-success: #22c55e;
+      --color-success-hover: #16a34a;
+      --color-success-muted: rgba(34, 197, 94, 0.15);
+      --color-warning: #ffd93d;
+      --color-warning-hover: #f5c800;
+      --color-warning-muted: rgba(255, 217, 61, 0.15);
+      --color-error: #ef4444;
+      --color-error-hover: #dc2626;
+      --color-error-muted: rgba(239, 68, 68, 0.15);
+      --color-info: #3b82f6;
+      --color-info-hover: #2563eb;
+      --color-info-muted: rgba(59, 130, 246, 0.15);
+      
+      /* Status Atendimento */
+      --status-aguardando: #ffd93d;
+      --status-andamento: #00d4ff;
+      --status-resolvido: #22c55e;
+      --status-cancelado: #6b6b80;
+      --status-urgente: #ef4444;
+      
+      /* Sombras */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+      --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+      --shadow-glow-success: 0 0 20px rgba(34, 197, 94, 0.3);
+      --shadow-glow-error: 0 0 20px rgba(239, 68, 68, 0.3);
+      
+      /* Tipografia */
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+      --font-size-5xl: 3rem;
+      --line-height-tight: 1.25;
+      --line-height-normal: 1.5;
+      --line-height-relaxed: 1.75;
+      
+      /* Espaçamento */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      
+      /* Bordas */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+      
+      /* Transições */
+      --transition-fast: 150ms ease;
+      --transition-normal: 250ms ease;
+      --transition-slow: 350ms ease;
+      
+      /* Z-index */
+      --z-dropdown: 100;
+      --z-modal: 200;
+      --z-tooltip: 300;
+      --z-toast: 400;
+    }
+    
+    /* ============================================
+       THEME: DARK (mais escuro e contrastante)
+       ============================================ */
+    [data-theme="dark"] {
+      --bg-primary: #000000;
+      --bg-secondary: #050508;
+      --bg-surface: #0a0a0f;
+      --bg-surface-hover: #111118;
+      --bg-surface-active: #18181f;
+      --bg-border: #1f1f28;
+      --bg-border-hover: #2a2a35;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --text-disabled: #353540;
+      
+      --brand-primary: #00d4ff;
+      --brand-primary-hover: #33ddff;
+      --brand-secondary: #00ffcc;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.7);
+      --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.4);
+    }
+    
+    /* ============================================
+       THEME: LIGHT
+       ============================================ */
+    [data-theme="light"] {
+      --bg-primary: #f8f9fc;
+      --bg-secondary: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-surface-hover: #f0f1f5;
+      --bg-surface-active: #e8e9ed;
+      --bg-border: #d0d5dd;
+      --bg-border-hover: #b0b5bd;
+      
+      --text-primary: #0a0a1a;
+      --text-secondary: #404055;
+      --text-muted: #6b6b80;
+      --text-disabled: #a0a0b0;
+      --text-inverse: #ffffff;
+      
+      --brand-primary: #0099cc;
+      --brand-primary-hover: #007aa3;
+      --brand-primary-active: #006080;
+      --brand-primary-muted: rgba(0, 153, 204, 0.12);
+      --brand-secondary: #00cc99;
+      
+      --color-success: #16a34a;
+      --color-success-hover: #15803d;
+      --color-success-muted: rgba(22, 163, 74, 0.12);
+      --color-warning: #d97706;
+      --color-warning-hover: #b45309;
+      --color-warning-muted: rgba(217, 119, 6, 0.12);
+      --color-error: #dc2626;
+      --color-error-hover: #b91c1c;
+      --color-error-muted: rgba(220, 38, 38, 0.12);
+      --color-info: #2563eb;
+      --color-info-hover: #1d4ed8;
+      --color-info-muted: rgba(37, 99, 235, 0.12);
+      
+      --status-aguardando: #d97706;
+      --status-andamento: #0099cc;
+      --status-resolvido: #16a34a;
+      --status-cancelado: #6b6b80;
+      --status-urgente: #dc2626;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+      --shadow-glow: 0 0 20px rgba(0, 153, 204, 0.2);
+    }
+    
+    /* ============================================
+       THEME: OLHOS CANSADOS (warm, low blue light)
+       ============================================ */
+    [data-theme="olhos-cansados"] {
+      --bg-primary: #1a1612;
+      --bg-secondary: #201c17;
+      --bg-surface: #26211b;
+      --bg-surface-hover: #2e2820;
+      --bg-surface-active: #363025;
+      --bg-border: #3d3528;
+      --bg-border-hover: #4a4030;
+      
+      --text-primary: #f5e6d3;
+      --text-secondary: #c4b39e;
+      --text-muted: #8a7a65;
+      --text-disabled: #5a4d3d;
+      --text-inverse: #1a1612;
+      
+      --brand-primary: #e6a64c;
+      --brand-primary-hover: #f0b560;
+      --brand-primary-active: #cc9340;
+      --brand-primary-muted: rgba(230, 166, 76, 0.15);
+      --brand-secondary: #7acc7a;
+      --brand-secondary-hover: #8ad98a;
+      
+      --color-success: #7acc7a;
+      --color-success-hover: #6ab86a;
+      --color-success-muted: rgba(122, 204, 122, 0.15);
+      --color-warning: #e6a64c;
+      --color-warning-hover: #cc9340;
+      --color-warning-muted: rgba(230, 166, 76, 0.15);
+      --color-error: #cc6b6b;
+      --color-error-hover: #b85a5a;
+      --color-error-muted: rgba(204, 107, 107, 0.15);
+      --color-info: #6b9ecc;
+      --color-info-hover: #5a8ab8;
+      --color-info-muted: rgba(107, 158, 204, 0.15);
+      
+      --status-aguardando: #e6a64c;
+      --status-andamento: #6b9ecc;
+      --status-resolvido: #7acc7a;
+      --status-cancelado: #8a7a65;
+      --status-urgente: #cc6b6b;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 20px rgba(230, 166, 76, 0.25);
+    }
+    
+    /* ============================================
+       BASE RESET & GLOBALS
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-normal);
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      min-height: 100vh;
+      transition: background var(--transition-normal), color var(--transition-normal);
+    }
+    
+    /* Grid Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(var(--bg-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    ::selection {
+      background: var(--brand-primary);
+      color: var(--text-inverse);
+    }
+    
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: var(--line-height-tight);
+      color: var(--text-primary);
+    }
+    
+    h1 { font-size: var(--font-size-5xl); }
+    h2 { font-size: var(--font-size-4xl); }
+    h3 { font-size: var(--font-size-3xl); }
+    h4 { font-size: var(--font-size-2xl); }
+    h5 { font-size: var(--font-size-xl); }
+    h6 { font-size: var(--font-size-lg); }
+    
+    p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-4);
+    }
+    
+    small {
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+    }
+    
+    a {
+      color: var(--brand-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    
+    a:hover {
+      color: var(--brand-primary-hover);
+      text-decoration: underline;
+    }
+    
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      background: var(--bg-surface);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--bg-border);
+    }
+    
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--space-8);
+    }
+    
+    .grid {
+      display: grid;
+      gap: var(--space-6);
+    }
+    
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-auto { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    
+    .flex {
+      display: flex;
+      gap: var(--space-4);
+    }
+    
+    .flex-wrap { flex-wrap: wrap; }
+    .flex-center { align-items: center; justify-content: center; }
+    .flex-between { align-items: center; justify-content: space-between; }
+    .flex-col { flex-direction: column; }
+    
+    /* ============================================
+       THEME SWITCHER (Fixed)
+       ============================================ */
+    .theme-switcher {
+      position: fixed;
+      top: var(--space-6);
+      right: var(--space-6);
+      z-index: var(--z-dropdown);
+      display: flex;
+      gap: var(--space-2);
+      background: var(--bg-surface);
+      padding: var(--space-2);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--bg-border);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .theme-btn {
+      padding: var(--space-2) var(--space-4);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .theme-btn:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+    
+    .theme-btn.active {
+      background: var(--brand-primary);
+      color: var(--text-inverse);
+      border-color: var(--brand-primary);
+    }
+    
+    /* ============================================
+       HEADER
+       ============================================ */
+    .header {
+      padding: var(--space-12) 0 var(--space-8);
+      border-bottom: 1px solid var(--bg-border);
+      margin-bottom: var(--space-12);
+    }
+    
+    .header h1 {
+      font-weight: 300;
+      margin-bottom: var(--space-2);
+    }
+    
+    .header h1 strong {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header p {
+      font-size: var(--font-size-lg);
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+    
+    /* ============================================
+       SECTION
+       ============================================ */
+    .section {
+      margin-bottom: var(--space-16);
+    }
+    
+    .section-header {
+      margin-bottom: var(--space-8);
+    }
+    
+    .section-title {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--brand-primary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .section-description {
+      font-size: var(--font-size-base);
+      color: var(--text-muted);
+    }
+    
+    /* ============================================
+       CARDS
+       ============================================ */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      transition: all var(--transition-normal);
+    }
+    
+    .card:hover {
+      border-color: var(--bg-border-hover);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .card-elevated {
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .card-interactive:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .card-glow:hover {
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .card-header {
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    
+    .card-title {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .card-subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      margin-top: var(--space-1);
+    }
+    
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      font-family: var(--font-family);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      line-height: 1;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    /* Primary */
+    .btn-primary {
+      background: var(--brand-primary);
+      color: var(--text-inverse);
+      border-color: var(--brand-primary);
+    }
+    
+    .btn-primary:hover {
+      background: var(--brand-primary-hover);
+      border-color: var(--brand-primary-hover);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .btn-primary:active {
+      background: var(--brand-primary-active);
+    }
+    
+    /* Secondary */
+    .btn-secondary {
+      background: transparent;
+      color: var(--brand-primary);
+      border-color: var(--brand-primary);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--brand-primary-muted);
+    }
+    
+    /* Ghost */
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: transparent;
+    }
+    
+    .btn-ghost:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+    
+    /* Success */
+    .btn-success {
+      background: var(--color-success);
+      color: white;
+      border-color: var(--color-success);
+    }
+    
+    .btn-success:hover {
+      background: var(--color-success-hover);
+      box-shadow: var(--shadow-glow-success);
+    }
+    
+    /* Error */
+    .btn-error {
+      background: var(--color-error);
+      color: white;
+      border-color: var(--color-error);
+    }
+    
+    .btn-error:hover {
+      background: var(--color-error-hover);
+      box-shadow: var(--shadow-glow-error);
+    }
+    
+    /* Sizes */
+    .btn-sm {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-xs);
+    }
+    
+    .btn-lg {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--font-size-base);
+    }
+    
+    /* Icon button */
+    .btn-icon {
+      padding: var(--space-3);
+      aspect-ratio: 1;
+    }
+    
+    /* Loading state */
+    .btn-loading {
+      position: relative;
+      color: transparent !important;
+    }
+    
+    .btn-loading::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    
+    .btn-primary.btn-loading::after {
+      border-top-color: var(--text-inverse);
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* ============================================
+       INPUTS
+       ============================================ */
+    .form-group {
+      margin-bottom: var(--space-5);
+    }
+    
+    .form-label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .form-hint {
+      font-size: var(--font-size-xs);
+      color: var(--text-muted);
+      margin-top: var(--space-1);
+    }
+    
+    .input {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    
+    .input::placeholder {
+      color: var(--text-muted);
+    }
+    
+    .input:hover {
+      border-color: var(--bg-border-hover);
+    }
+    
+    .input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px var(--brand-primary-muted);
+    }
+    
+    .input:disabled {
+      background: var(--bg-surface);
+      color: var(--text-disabled);
+      cursor: not-allowed;
+    }
+    
+    .input-error {
+      border-color: var(--color-error);
+    }
+    
+    .input-error:focus {
+      box-shadow: 0 0 0 3px var(--color-error-muted);
+    }
+    
+    .input-success {
+      border-color: var(--color-success);
+    }
+    
+    /* Textarea */
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    /* Select */
+    .select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b80' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--space-3) center;
+      padding-right: var(--space-10);
+    }
+    
+    /* Checkbox & Radio */
+    .checkbox-group,
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      cursor: pointer;
+    }
+    
+    .checkbox,
+    .radio {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--bg-border);
+      background: var(--bg-primary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .checkbox {
+      border-radius: var(--radius-sm);
+    }
+    
+    .radio {
+      border-radius: 50%;
+    }
+    
+    .checkbox:hover,
+    .radio:hover {
+      border-color: var(--brand-primary);
+    }
+    
+    .checkbox:checked,
+    .radio:checked {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
+    }
+    
+    .checkbox:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230a0a1a' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    .radio:checked {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='4' fill='%230a0a1a'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    /* Toggle */
+    .toggle {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      appearance: none;
+      background: var(--bg-border);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    
+    .toggle::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: var(--text-primary);
+      border-radius: 50%;
+      transition: transform var(--transition-fast);
+    }
+    
+    .toggle:checked {
+      background: var(--brand-primary);
+    }
+    
+    .toggle:checked::before {
+      transform: translateX(22px);
+    }
+    
+    /* ============================================
+       BADGES
+       ============================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+    }
+    
+    .badge-primary {
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+      border-color: var(--brand-primary);
+    }
+    
+    .badge-success {
+      background: var(--color-success-muted);
+      color: var(--color-success);
+      border-color: var(--color-success);
+    }
+    
+    .badge-warning {
+      background: var(--color-warning-muted);
+      color: var(--color-warning);
+      border-color: var(--color-warning);
+    }
+    
+    .badge-error {
+      background: var(--color-error-muted);
+      color: var(--color-error);
+      border-color: var(--color-error);
+    }
+    
+    .badge-info {
+      background: var(--color-info-muted);
+      color: var(--color-info);
+      border-color: var(--color-info);
+    }
+    
+    .badge-neutral {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border-color: var(--bg-border);
+    }
+    
+    /* Status badges */
+    .badge-aguardando {
+      background: rgba(255, 217, 61, 0.15);
+      color: var(--status-aguardando);
+      border-color: var(--status-aguardando);
+    }
+    
+    .badge-andamento {
+      background: rgba(0, 212, 255, 0.15);
+      color: var(--status-andamento);
+      border-color: var(--status-andamento);
+    }
+    
+    .badge-resolvido {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--status-resolvido);
+      border-color: var(--status-resolvido);
+    }
+    
+    .badge-cancelado {
+      background: rgba(107, 107, 128, 0.15);
+      color: var(--status-cancelado);
+      border-color: var(--status-cancelado);
+    }
+    
+    .badge-urgente {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--status-urgente);
+      border-color: var(--status-urgente);
+    }
+    
+    /* Badge with dot */
+    .badge-dot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    
+    /* ============================================
+       ALERTS
+       ============================================ */
+    .alert {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid;
+    }
+    
+    .alert-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+    }
+    
+    .alert-content {
+      flex: 1;
+    }
+    
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+    
+    .alert-description {
+      font-size: var(--font-size-sm);
+      opacity: 0.9;
+    }
+    
+    .alert-success {
+      background: var(--color-success-muted);
+      border-color: var(--color-success);
+      color: var(--color-success);
+    }
+    
+    .alert-warning {
+      background: var(--color-warning-muted);
+      border-color: var(--color-warning);
+      color: var(--color-warning);
+    }
+    
+    .alert-error {
+      background: var(--color-error-muted);
+      border-color: var(--color-error);
+      color: var(--color-error);
+    }
+    
+    .alert-info {
+      background: var(--color-info-muted);
+      border-color: var(--color-info);
+      color: var(--color-info);
+    }
+    
+    /* ============================================
+       AVATAR
+       ============================================ */
+    .avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+      font-weight: 600;
+      overflow: hidden;
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .avatar-xs { width: 24px; height: 24px; font-size: var(--font-size-xs); }
+    .avatar-sm { width: 32px; height: 32px; font-size: var(--font-size-sm); }
+    .avatar-md { width: 40px; height: 40px; font-size: var(--font-size-base); }
+    .avatar-lg { width: 48px; height: 48px; font-size: var(--font-size-lg); }
+    .avatar-xl { width: 64px; height: 64px; font-size: var(--font-size-xl); }
+    
+    .avatar-group {
+      display: flex;
+    }
+    
+    .avatar-group .avatar {
+      border: 2px solid var(--bg-primary);
+      margin-left: -8px;
+    }
+    
+    .avatar-group .avatar:first-child {
+      margin-left: 0;
+    }
+    
+    /* Online indicator */
+    .avatar-status {
+      position: relative;
+    }
+    
+    .avatar-status::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-primary);
+      background: var(--color-success);
+    }
+    
+    .avatar-status.offline::after {
+      background: var(--text-muted);
+    }
+    
+    .avatar-status.busy::after {
+      background: var(--color-error);
+    }
+    
+    /* ============================================
+       PROGRESS
+       ============================================ */
+    .progress {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: var(--brand-primary);
+      border-radius: var(--radius-full);
+      transition: width var(--transition-slow);
+    }
+    
+    .progress-success .progress-bar { background: var(--color-success); }
+    .progress-warning .progress-bar { background: var(--color-warning); }
+    .progress-error .progress-bar { background: var(--color-error); }
+    
+    /* ============================================
+       SKELETON
+       ============================================ */
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        var(--bg-surface) 25%,
+        var(--bg-surface-hover) 50%,
+        var(--bg-surface) 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: var(--radius-md);
+    }
+    
+    .skeleton-text {
+      height: 1em;
+      margin-bottom: var(--space-2);
+    }
+    
+    .skeleton-title {
+      height: 1.5em;
+      width: 60%;
+      margin-bottom: var(--space-3);
+    }
+    
+    .skeleton-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    
+    .skeleton-button {
+      height: 40px;
+      width: 120px;
+    }
+    
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    /* ============================================
+       TABS
+       ============================================ */
+    .tabs {
+      display: flex;
+      gap: var(--space-1);
+      border-bottom: 1px solid var(--bg-border);
+      margin-bottom: var(--space-6);
+    }
+    
+    .tab {
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      margin-bottom: -1px;
+    }
+    
+    .tab:hover {
+      color: var(--text-primary);
+    }
+    
+    .tab.active {
+      color: var(--brand-primary);
+      border-bottom-color: var(--brand-primary);
+    }
+    
+    /* ============================================
+       TABLE
+       ============================================ */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+    }
+    
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .table th,
+    .table td {
+      padding: var(--space-4);
+      text-align: left;
+      border-bottom: 1px solid var(--bg-border);
+    }
+    
+    .table th {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+    }
+    
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .table tr:hover td {
+      background: var(--bg-surface-hover);
+    }
+    
+    /* ============================================
+       MODAL
+       ============================================ */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: var(--z-modal);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-normal);
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal {
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow: auto;
+      transform: scale(0.9) translateY(20px);
+      transition: transform var(--transition-normal);
+    }
+    
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+    
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--bg-border);
+    }
+    
+    .modal-title {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+    }
+    
+    .modal-close {
+      padding: var(--space-2);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-fast);
+    }
+    
+    .modal-close:hover {
+      background: var(--bg-surface-hover);
+      color: var(--text-primary);
+    }
+    
+    .modal-body {
+      padding: var(--space-6);
+    }
+    
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-3);
+      padding: var(--space-5) var(--space-6);
+      border-top: 1px solid var(--bg-border);
+    }
+    
+    /* ============================================
+       TOOLTIP
+       ============================================ */
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      padding: var(--space-2) var(--space-3);
+      background: var(--text-primary);
+      color: var(--text-inverse);
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      white-space: nowrap;
+      border-radius: var(--radius-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-fast);
+      z-index: var(--z-tooltip);
+    }
+    
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--text-primary);
+    }
+    
+    .tooltip-wrapper:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-12px);
+    }
+    
+    /* ============================================
+       TOAST
+       ============================================ */
+    .toast-container {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      z-index: var(--z-toast);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      min-width: 300px;
+      animation: toast-in 0.3s ease;
+    }
+    
+    @keyframes toast-in {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .toast-success { border-left: 4px solid var(--color-success); }
+    .toast-error { border-left: 4px solid var(--color-error); }
+    .toast-warning { border-left: 4px solid var(--color-warning); }
+    .toast-info { border-left: 4px solid var(--color-info); }
+    
+    /* ============================================
+       COLOR SWATCHES
+       ============================================ */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-4);
+    }
+    
+    .color-swatch {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--bg-border);
+    }
+    
+    .color-preview {
+      height: 80px;
+    }
+    
+    .color-info {
+      padding: var(--space-3);
+      background: var(--bg-surface);
+    }
+    
+    .color-name {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .color-value {
+      font-size: var(--font-size-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    
+    /* ============================================
+       SPACING DEMO
+       ============================================ */
+    .spacing-demo {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    
+    .spacing-block {
+      background: var(--brand-primary-muted);
+      border: 1px dashed var(--brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xs);
+      font-family: var(--font-mono);
+      color: var(--brand-primary);
+    }
+    
+    /* ============================================
+       TYPOGRAPHY DEMO
+       ============================================ */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+    }
+    
+    .type-label {
+      min-width: 100px;
+      font-size: var(--font-size-xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: var(--space-4);
+      }
+      
+      .grid-4,
+      .grid-3,
+      .grid-2 { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .theme-switcher {
+        top: auto;
+        bottom: var(--space-4);
+        right: var(--space-4);
+        left: var(--space-4);
+        justify-content: center;
+      }
+      
+      .flex {
+        flex-direction: column;
+      }
+      
+      h1 { font-size: var(--font-size-3xl); }
+      h2 { font-size: var(--font-size-2xl); }
+    }
+    
+    /* ============================================
+       DEMO PAGE SPECIFIC
+       ============================================ */
+    .demo-box {
+      padding: var(--space-6);
+      background: var(--bg-surface);
+      border: 1px solid var(--bg-border);
+      border-radius: var(--radius-lg);
+    }
+    
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    
+    .demo-label {
+      font-size: var(--font-size-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-3);
+    }
+    
+    .divider {
+      height: 1px;
+      background: var(--bg-border);
+      margin: var(--space-8) 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Theme Switcher -->
+  <div class="theme-switcher">
+    <button class="theme-btn active" onclick="setTheme('default')">Default</button>
+    <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
+    <button class="theme-btn" onclick="setTheme('light')">Light</button>
+    <button class="theme-btn" onclick="setTheme('olhos-cansados')">Olhos Cansados</button>
+  </div>
+  
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <h1>Design <strong>System</strong></h1>
+      <p>Playground completo para testar temas, cores e componentes. Mude o tema acima e veja todas as alterações em tempo real.</p>
+    </header>
+    
+    <!-- COLORS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Cores</h3>
+        <p class="section-description">Paleta completa de cores do sistema</p>
+      </div>
+      
+      <!-- Base Colors -->
+      <h6 style="margin-bottom: var(--space-4); color: var(--text-muted);">Base</h6>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--bg-primary);"></div>
+          <div class="color-info">
+            <div class="color-name">Background</div>
+            <div class="color-value">--bg-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--bg-surface);"></div>
+          <div class="color-info">
+            <div class="color-name">Surface</div>
+            <div class="color-value">--bg-surface</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--bg-surface-hover);"></div>
+          <div class="color-info">
+            <div class="color-name">Surface Hover</div>
+            <div class="color-value">--bg-surface-hover</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--bg-border);"></div>
+          <div class="color-info">
+            <div class="color-name">Border</div>
+            <div class="color-value">--bg-border</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Brand Colors -->
+      <h6 style="margin-bottom: var(--space-4); color: var(--text-muted);">Brand</h6>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--brand-primary);"></div>
+          <div class="color-info">
+            <div class="color-name">Primary</div>
+            <div class="color-value">--brand-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--brand-primary-hover);"></div>
+          <div class="color-info">
+            <div class="color-name">Primary Hover</div>
+            <div class="color-value">--brand-primary-hover</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--brand-secondary);"></div>
+          <div class="color-info">
+            <div class="color-name">Secondary</div>
+            <div class="color-value">--brand-secondary</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Semantic Colors -->
+      <h6 style="margin-bottom: var(--space-4); color: var(--text-muted);">Semânticas</h6>
+      <div class="color-grid" style="margin-bottom: var(--space-8);">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--color-success);"></div>
+          <div class="color-info">
+            <div class="color-name">Success</div>
+            <div class="color-value">--color-success</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--color-warning);"></div>
+          <div class="color-info">
+            <div class="color-name">Warning</div>
+            <div class="color-value">--color-warning</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--color-error);"></div>
+          <div class="color-info">
+            <div class="color-name">Error</div>
+            <div class="color-value">--color-error</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--color-info);"></div>
+          <div class="color-info">
+            <div class="color-name">Info</div>
+            <div class="color-value">--color-info</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Text Colors -->
+      <h6 style="margin-bottom: var(--space-4); color: var(--text-muted);">Texto</h6>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--text-primary);"></div>
+          <div class="color-info">
+            <div class="color-name">Primary</div>
+            <div class="color-value">--text-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--text-secondary);"></div>
+          <div class="color-info">
+            <div class="color-name">Secondary</div>
+            <div class="color-value">--text-secondary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--text-muted);"></div>
+          <div class="color-info">
+            <div class="color-name">Muted</div>
+            <div class="color-value">--text-muted</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-preview" style="background: var(--text-disabled);"></div>
+          <div class="color-info">
+            <div class="color-name">Disabled</div>
+            <div class="color-value">--text-disabled</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- TYPOGRAPHY -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Tipografia</h3>
+        <p class="section-description">Escala tipográfica e hierarquia de texto</p>
+      </div>
+      
+      <div class="card">
+        <div class="type-scale">
+          <div class="type-row">
+            <span class="type-label">5xl / 3rem</span>
+            <span style="font-size: var(--font-size-5xl); font-weight: 600;">Display</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">4xl / 2.25rem</span>
+            <span style="font-size: var(--font-size-4xl); font-weight: 600;">Heading 1</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">3xl / 1.875rem</span>
+            <span style="font-size: var(--font-size-3xl); font-weight: 600;">Heading 2</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">2xl / 1.5rem</span>
+            <span style="font-size: var(--font-size-2xl); font-weight: 600;">Heading 3</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">xl / 1.25rem</span>
+            <span style="font-size: var(--font-size-xl); font-weight: 500;">Heading 4</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">lg / 1.125rem</span>
+            <span style="font-size: var(--font-size-lg);">Large Text</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">base / 1rem</span>
+            <span style="font-size: var(--font-size-base);">Body Text</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">sm / 0.875rem</span>
+            <span style="font-size: var(--font-size-sm); color: var(--text-secondary);">Small Text</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">xs / 0.75rem</span>
+            <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Caption</span>
+          </div>
+          <div class="type-row">
+            <span class="type-label">mono</span>
+            <span style="font-family: var(--font-mono); color: var(--text-secondary);">Monospace Text</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- BUTTONS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Botões</h3>
+        <p class="section-description">Variações, tamanhos e estados</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="demo-label">Variações</div>
+          <div class="demo-row">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-ghost">Ghost</button>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Semânticos</div>
+          <div class="demo-row">
+            <button class="btn btn-success">Success</button>
+            <button class="btn btn-error">Error</button>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Tamanhos</div>
+          <div class="demo-row">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Estados</div>
+          <div class="demo-row">
+            <button class="btn btn-primary">Normal</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-primary btn-loading">Loading</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- INPUTS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Inputs</h3>
+        <p class="section-description">Campos de formulário e controles</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label">Text Input</label>
+            <input type="text" class="input" placeholder="Digite algo...">
+            <span class="form-hint">Texto de ajuda opcional</span>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Com valor</label>
+            <input type="text" class="input" value="Valor preenchido">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Erro</label>
+            <input type="text" class="input input-error" value="Valor inválido">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Desabilitado</label>
+            <input type="text" class="input" disabled value="Não editável">
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label">Select</label>
+            <select class="input select">
+              <option>Selecione uma opção</option>
+              <option>Opção 1</option>
+              <option>Opção 2</option>
+              <option>Opção 3</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Textarea</label>
+            <textarea class="input textarea" placeholder="Digite uma mensagem..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Checkbox</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="checkbox-group">
+                <input type="checkbox" class="checkbox" checked>
+                <span>Opção selecionada</span>
+              </label>
+              <label class="checkbox-group">
+                <input type="checkbox" class="checkbox">
+                <span>Opção não selecionada</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Radio</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <label class="radio-group">
+                <input type="radio" class="radio" name="radio-demo" checked>
+                <span>Opção A</span>
+              </label>
+              <label class="radio-group">
+                <input type="radio" class="radio" name="radio-demo">
+                <span>Opção B</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Toggle</label>
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <input type="checkbox" class="toggle" checked>
+              <span style="font-size: var(--font-size-sm);">Ativado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- BADGES -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Badges</h3>
+        <p class="section-description">Tags e indicadores de status</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="demo-label">Semânticos</div>
+          <div class="demo-row">
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-error">Error</span>
+            <span class="badge badge-info">Info</span>
+            <span class="badge badge-neutral">Neutral</span>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Status de Atendimento</div>
+          <div class="demo-row">
+            <span class="badge badge-aguardando badge-dot">Aguardando</span>
+            <span class="badge badge-andamento badge-dot">Em Andamento</span>
+            <span class="badge badge-resolvido badge-dot">Resolvido</span>
+            <span class="badge badge-cancelado badge-dot">Cancelado</span>
+            <span class="badge badge-urgente badge-dot">Urgente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- ALERTS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Alertas</h3>
+        <p class="section-description">Mensagens de feedback</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="alert alert-success">
+          <span class="alert-icon">✓</span>
+          <div class="alert-content">
+            <div class="alert-title">Sucesso!</div>
+            <div class="alert-description">Ticket resolvido com sucesso.</div>
+          </div>
+        </div>
+        
+        <div class="alert alert-error">
+          <span class="alert-icon">✕</span>
+          <div class="alert-content">
+            <div class="alert-title">Erro!</div>
+            <div class="alert-description">Não foi possível enviar a mensagem.</div>
+          </div>
+        </div>
+        
+        <div class="alert alert-warning">
+          <span class="alert-icon">⚠</span>
+          <div class="alert-content">
+            <div class="alert-title">Atenção!</div>
+            <div class="alert-description">Aguardando resposta do cliente há 2 dias.</div>
+          </div>
+        </div>
+        
+        <div class="alert alert-info">
+          <span class="alert-icon">ℹ</span>
+          <div class="alert-content">
+            <div class="alert-title">Informação</div>
+            <div class="alert-description">Um novo ticket foi atribuído a você.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- AVATARS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Avatars</h3>
+        <p class="section-description">Representação de usuários</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="demo-label">Tamanhos</div>
+          <div class="demo-row">
+            <div class="avatar avatar-xs">XS</div>
+            <div class="avatar avatar-sm">SM</div>
+            <div class="avatar avatar-md">MD</div>
+            <div class="avatar avatar-lg">LG</div>
+            <div class="avatar avatar-xl">XL</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Com Status</div>
+          <div class="demo-row">
+            <div class="avatar avatar-md avatar-status">GG</div>
+            <div class="avatar avatar-md avatar-status offline">AB</div>
+            <div class="avatar avatar-md avatar-status busy">CD</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Grupo</div>
+          <div class="avatar-group">
+            <div class="avatar avatar-md">A</div>
+            <div class="avatar avatar-md">B</div>
+            <div class="avatar avatar-md">C</div>
+            <div class="avatar avatar-md">+3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- CARDS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Cards</h3>
+        <p class="section-description">Containers de conteúdo</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Card Padrão</h5>
+            <p class="card-subtitle">Subtítulo opcional</p>
+          </div>
+          <p>Conteúdo do card com texto de exemplo para demonstrar o layout.</p>
+        </div>
+        
+        <div class="card card-elevated">
+          <div class="card-header">
+            <h5 class="card-title">Card Elevado</h5>
+          </div>
+          <p>Card com sombra mais pronunciada para destaque.</p>
+        </div>
+        
+        <div class="card card-interactive card-glow">
+          <div class="card-header">
+            <h5 class="card-title">Card Interativo</h5>
+          </div>
+          <p>Hover para ver o efeito de glow e elevação.</p>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- PROGRESS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Progress</h3>
+        <p class="section-description">Indicadores de progresso</p>
+      </div>
+      
+      <div class="card" style="display: flex; flex-direction: column; gap: var(--space-6);">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+            <span style="font-size: var(--font-size-sm);">Default</span>
+            <span style="font-size: var(--font-size-sm); color: var(--text-muted);">65%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: 65%;"></div>
+          </div>
+        </div>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+            <span style="font-size: var(--font-size-sm);">Success</span>
+            <span style="font-size: var(--font-size-sm); color: var(--text-muted);">100%</span>
+          </div>
+          <div class="progress progress-success">
+            <div class="progress-bar" style="width: 100%;"></div>
+          </div>
+        </div>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+            <span style="font-size: var(--font-size-sm);">Warning</span>
+            <span style="font-size: var(--font-size-sm); color: var(--text-muted);">45%</span>
+          </div>
+          <div class="progress progress-warning">
+            <div class="progress-bar" style="width: 45%;"></div>
+          </div>
+        </div>
+        
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+            <span style="font-size: var(--font-size-sm);">Error</span>
+            <span style="font-size: var(--font-size-sm); color: var(--text-muted);">15%</span>
+          </div>
+          <div class="progress progress-error">
+            <div class="progress-bar" style="width: 15%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- TABS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Tabs</h3>
+        <p class="section-description">Navegação por abas</p>
+      </div>
+      
+      <div class="card">
+        <div class="tabs">
+          <button class="tab active">Todos</button>
+          <button class="tab">Abertos</button>
+          <button class="tab">Em Andamento</button>
+          <button class="tab">Resolvidos</button>
+        </div>
+        <p style="color: var(--text-muted);">Conteúdo da aba selecionada apareceria aqui.</p>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- TABLE -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Tabela</h3>
+        <p class="section-description">Exibição de dados tabulares</p>
+      </div>
+      
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Ticket</th>
+              <th>Cliente</th>
+              <th>Assunto</th>
+              <th>Status</th>
+              <th>Prioridade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>#1234</code></td>
+              <td>
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                  <div class="avatar avatar-sm avatar-status">JD</div>
+                  <span>João da Silva</span>
+                </div>
+              </td>
+              <td>Problema com login</td>
+              <td><span class="badge badge-andamento badge-dot">Em Andamento</span></td>
+              <td><span class="badge badge-warning">Média</span></td>
+            </tr>
+            <tr>
+              <td><code>#1235</code></td>
+              <td>
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                  <div class="avatar avatar-sm">MA</div>
+                  <span>Maria Alves</span>
+                </div>
+              </td>
+              <td>Dúvida sobre faturamento</td>
+              <td><span class="badge badge-aguardando badge-dot">Aguardando</span></td>
+              <td><span class="badge badge-info">Baixa</span></td>
+            </tr>
+            <tr>
+              <td><code>#1236</code></td>
+              <td>
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                  <div class="avatar avatar-sm avatar-status busy">PS</div>
+                  <span>Pedro Santos</span>
+                </div>
+              </td>
+              <td>Sistema fora do ar</td>
+              <td><span class="badge badge-urgente badge-dot">Urgente</span></td>
+              <td><span class="badge badge-error">Alta</span></td>
+            </tr>
+            <tr>
+              <td><code>#1237</code></td>
+              <td>
+                <div style="display: flex; align-items: center; gap: var(--space-3);">
+                  <div class="avatar avatar-sm avatar-status offline">AC</div>
+                  <span>Ana Costa</span>
+                </div>
+              </td>
+              <td>Solicitação de recurso</td>
+              <td><span class="badge badge-resolvido badge-dot">Resolvido</span></td>
+              <td><span class="badge badge-success">Baixa</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- SKELETON -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Skeleton</h3>
+        <p class="section-description">Placeholders de carregamento</p>
+      </div>
+      
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="demo-label">Card Loading</div>
+          <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+            <div class="skeleton skeleton-avatar"></div>
+            <div style="flex: 1;">
+              <div class="skeleton skeleton-title"></div>
+              <div class="skeleton skeleton-text"></div>
+              <div class="skeleton skeleton-text" style="width: 80%;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="demo-label">Button Loading</div>
+          <div class="demo-row">
+            <div class="skeleton skeleton-button"></div>
+            <div class="skeleton skeleton-button" style="width: 80px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- SPACING -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Espaçamento</h3>
+        <p class="section-description">Escala de spacing do sistema</p>
+      </div>
+      
+      <div class="card">
+        <div class="spacing-demo">
+          <div>
+            <div class="spacing-block" style="width: 4px; height: 40px;">1</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">4px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 8px; height: 40px;">2</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">8px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 12px; height: 40px;">3</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">12px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 16px; height: 40px;">4</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">16px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 24px; height: 40px;">6</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">24px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 32px; height: 40px;">8</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">32px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 48px; height: 40px;">12</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">48px</div>
+          </div>
+          <div>
+            <div class="spacing-block" style="width: 64px; height: 40px;">16</div>
+            <div style="font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-top: 4px;">64px</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- SHADOWS -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Sombras</h3>
+        <p class="section-description">Níveis de elevação</p>
+      </div>
+      
+      <div class="grid grid-4">
+        <div class="card" style="box-shadow: var(--shadow-sm);">
+          <div class="demo-label">Small</div>
+          <code style="font-size: var(--font-size-xs);">--shadow-sm</code>
+        </div>
+        <div class="card" style="box-shadow: var(--shadow-md);">
+          <div class="demo-label">Medium</div>
+          <code style="font-size: var(--font-size-xs);">--shadow-md</code>
+        </div>
+        <div class="card" style="box-shadow: var(--shadow-lg);">
+          <div class="demo-label">Large</div>
+          <code style="font-size: var(--font-size-xs);">--shadow-lg</code>
+        </div>
+        <div class="card" style="box-shadow: var(--shadow-glow);">
+          <div class="demo-label">Glow</div>
+          <code style="font-size: var(--font-size-xs);">--shadow-glow</code>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- MODAL DEMO -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Modal</h3>
+        <p class="section-description">Diálogos e janelas modais</p>
+      </div>
+      
+      <button class="btn btn-primary" onclick="toggleModal()">Abrir Modal</button>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- TOOLTIP DEMO -->
+    <section class="section">
+      <div class="section-header">
+        <h3 class="section-title">Tooltip</h3>
+        <p class="section-description">Dicas contextuais</p>
+      </div>
+      
+      <div class="demo-row">
+        <div class="tooltip-wrapper">
+          <button class="btn btn-secondary">Hover me</button>
+          <div class="tooltip">Tooltip de exemplo</div>
+        </div>
+        
+        <div class="tooltip-wrapper">
+          <button class="btn btn-ghost">Outro botão</button>
+          <div class="tooltip">Mais informações aqui</div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h5 class="modal-title">Título do Modal</h5>
+        <button class="modal-close" onclick="toggleModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Este é um exemplo de modal. Você pode colocar qualquer conteúdo aqui.</p>
+        <div class="form-group" style="margin-top: var(--space-4);">
+          <label class="form-label">Campo de exemplo</label>
+          <input type="text" class="input" placeholder="Digite algo...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="toggleModal()">Cancelar</button>
+        <button class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast Container -->
+  <div class="toast-container">
+    <div class="toast toast-success">
+      <span>✓</span>
+      <span>Alterações salvas com sucesso!</span>
+    </div>
+  </div>
+  
+  <script>
+    // Theme Switcher
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      
+      // Update active button
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().replace(' ', '-') === theme || 
+            (btn.textContent === 'Olhos Cansados' && theme === 'olhos-cansados')) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Save preference
+      localStorage.setItem('theme', theme);
+    }
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+    
+    // Modal Toggle
+    function toggleModal() {
+      document.getElementById('modal').classList.toggle('active');
+    }
+    
+    // Close modal on overlay click
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        toggleModal();
+      }
+    });
+    
+    // Tab functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        this.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
